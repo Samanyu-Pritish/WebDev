@@ -1,0 +1,44 @@
+body{
+    background-image: url("bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 44vw;
+    margin-top: 10vh;
+}
+
+h2{
+    font-size: 55px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.forms input{
+    color: green;
+    font-size: 24px;
+    width: 404px;
+    outline: none;
+    height: 53px;
+}
+
+.forms{
+    margin: 0px 34px;
+}
+
+button{
+    font-family: 'Algerian';
+    font-size: 54px;
+    width: 690px;
+    margin-left: -9vw;
+    color: white;
+    background: linear-gradient(90deg, #a8b2ed, cyan);
+    border: none;
+    border-radius: 21px;
+    cursor: pointer;
+}

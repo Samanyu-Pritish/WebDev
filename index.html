@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body{
+        overflow: hidden;
+    }
+</style>
+<body>
+    <nav>
+        <div class="logo"><img src="htmlscssjs.jpeg" alt="" width="80" height="90">
+            <h2>Web Developement</h2>
+        </div>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="language.html">Language</a></li>
+            <li><a href="code.html">Editor</a></li>
+            <li><a><a href="demo.html">Projects</a></a></li>
+        </ul>
+    </nav><br><br><br><br>
+    <div class="document-center">
+        <!--This carousel-container only exists so we can do the 
+      aspect ratio tricks in CSS-->
+        <div class="carousel-container">
+            <div class="carousel" id="carousel-1" auto-scroll="7000">
+                <!--The uppermost screen will appear first. This is due to JavaScript-->
+                <section class="carousel-screen">
+                    <img src="blue.png" alt="Chicago Band" />
+                    <section class="text-container">
+                        <p>Step1</p>
+                        <p>Make design of website</p>
+                    </section>
+                </section>
+                <section class="carousel-screen">
+                    <img src="yellow.png" alt="New York" />
+                    <section class="text-container">
+                        <p>Step2</p>
+                        <p>Choose Language</p>
+                    </section>
+                </section>
+                <section class="carousel-screen">
+                    <img src="lime.png" alt="Los Angeles" />
+                    <section class="text-container">
+                        <p>Step3</p>
+                        <p>Choose Editor</p>
+                    </section>
+                </section>
+                <section class="carousel-screen">
+                    <img src="red.png" alt="Los Angeles" />
+                    <section class="text-container">
+                        <p>Step4</p>
+                        <p>Make websites</p>
+                    </section>
+                </section>
+                <!--These are not screens. They will always be on carousel-->
+                <section class="circle-container">
+                    <!--These 'circles' need to match the number of carousel screens-->
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </section>
+                <div class="left-arrow">
+                    <span class="chevron left"></span>
+                </div>
+                <div class="right-arrow">
+                    <span class="chevron right"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <!--Script. Do not touch!-->
+</body>
+
+</html>

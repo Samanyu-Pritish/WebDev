@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+}
+
+.item{
+    background: rgb(1, 119, 215);
+    height: 122px;
+    width: 122px;
+    margin: 5px;
+    /* transform: skew(10deg); */
+    border-radius: 8px;
+}

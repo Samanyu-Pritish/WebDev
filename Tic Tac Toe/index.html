@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 5px;
+      margin: 20px auto;
+    }
+    
+    .cell {
+      width: 100px;
+      height: 100px;
+      font-size: 24px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #status {
+      margin-top: 20px;
+    }
+
+    #reset {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Tic-Tac-Toe</title>
+</head>
+<body>
+
+<div id="board"></div>
+<p id="status"></p>
+<button id="reset">Reset Game</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const board = document.getElementById("board");
+    const status = document.getElementById("status");
+    const resetButton = document.getElementById("reset");
+    let currentPlayer = "X";
+    let gameOver = false;
+
+    // Create the Tic-Tac-Toe board
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        cell.addEventListener("click", handleCellClick);
+        board.appendChild(cell);
+      }
+    }
+
+    function handleCellClick(event) {
+      if (gameOver) return;
+
+      const cell = event.target;
+      const row = cell.dataset.row;
+      const col = cell.dataset.col;
+
+      if (cell.textContent === "") {
+        cell.textContent = currentPlayer;
+        if (checkWinner(row, col, currentPlayer)) {
+          status.textContent = `${currentPlayer} wins! Game Over.`;
+          gameOver = true;
+        } else if (checkBoardFull()) {
+          status.textContent = "It's a draw!";
+          gameOver = true;
+        } else {
+          currentPlayer = currentPlayer === "X" ? "O" : "X";
+          status.textContent = `${currentPlayer}'s turn`;
+          if (currentPlayer === "O" && !gameOver) {
+            setTimeout(computerMove, 500);
+          }
+        }
+      }
+    }
+
+    function computerMove() {
+      if (gameOver) return;
+
+      const emptyCells = Array.from(document.querySelectorAll(".cell")).filter(cell => cell.textContent === "");
+      const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+      
+      if (randomCell) {
+        randomCell.textContent = currentPlayer;
+        const row = randomCell.dataset.row;
+        const col = randomCell.dataset.col;
+
+        if (checkWinner(row, col, currentPlayer)) {
+          status.textContent = `${currentPlayer} wins! Game Over.`;
+          gameOver = true;
+        } else if (checkBoardFull()) {
+          status.textContent = "It's a draw!";
+          gameOver = true;
+        } else {
+          currentPlayer = currentPlayer === "X" ? "O" : "X";
+          status.textContent = `${currentPlayer}'s turn`;
+        }
+      }
+    }
+
+    function checkWinner(row, col, player) {
+      // Check row
+      if (checkLine(0, col, 2, col, player)) return true;
+      // Check column
+      if (checkLine(row, 0, row, 2, player)) return true;
+      // Check diagonal
+      if (row === col && checkLine(0, 0, 2, 2, player)) return true;
+      // Check reverse diagonal
+      if (row + col === 2 && checkLine(0, 2, 2, 0, player)) return true;
+      return false;
+    }
+
+    function checkLine(startRow, startCol, endRow, endCol, player) {
+      for (let i = startRow; i <= endRow; i++) {
+        for (let j = startCol; j <= endCol; j++) {
+          const cell = document.querySelector(`.cell[data-row="${i}"][data-col="${j}"]`);
+          if (cell.textContent !== player) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function checkBoardFull() {
+      const cells = document.querySelectorAll(".cell");
+      for (const cell of cells) {
+        if (cell.textContent === "") {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function resetGame() {
+      const cells = document.querySelectorAll(".cell");
+      for (const cell of cells) {
+        cell.textContent = "";
+      }
+      status.textContent = "Let's play!";
+      currentPlayer = "X";
+      gameOver = false;
+    }
+
+    resetButton.addEventListener("click", resetGame);
+  });
+</script>
+
+</body>
+</html>

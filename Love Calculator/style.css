@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    align-items: center;    
+    display: flex;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(15, 150, 31);
+    font-size: 55px;
+}
+
+p{
+    color: red;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+input{
+    color: blueviolet;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+
+.container{
+    margin-left: 44px;
+}
+
+#btn{
+    background-color: transparent;
+    border: 2px solid coral;
+    border-radius: 22px;
+    font-size: 32px;
+    padding: 3px 5px;
+    margin-left: 19px;
+    color: coral;
+    cursor: pointer;
+    transition: all ease .4s;
+}
+
+#btn:hover{
+    background-color: coral;
+    color: white;
+}
+
+#div{
+    font-size: 33px;
+    margin-left: 49px;
+}
